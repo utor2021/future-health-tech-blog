@@ -1,8 +1,8 @@
 # Deep thoughts
 ## Description
-This project uses the MERN stack to use in a single application. This is a social media application called "Deep Thoughts," where users can create an account, post their thoughts for others to see, and interact with other users through these thoughts.
+This project uses the MERN stack to use in a single application. This is a blog application called "Health fusion," where users can create an account, post their future of health technology ideas for others to see, and interact with other users through these ideas.
 
-![alt text](https://github.com/jdeschat/deep-thoughts/blob/main/client/public/deep-thoughts.png)
+![alt text](https://github.com/utor2021/health-fusion/blob/main/client/public/health-fusion.png)
 
 ## Table of Contents
 - [Description](#description)
@@ -29,7 +29,7 @@ To install this application, clone the code into your terminal for the respectiv
 ## Usage
 1. Visit the site at https://deep-thoughts1284.herokuapp.com
 2. Sign up for an account
-3. Once logged in, you can create a new thought and submit it hitting the "submit" button
+3. Once logged in, you can create a new discussion and submit it hitting the "submit" button
 4. You can click to see or start a discussion on other users posts
 5. To logout, hit the "logout" button on the top right corner 
 
@@ -37,12 +37,12 @@ To install this application, clone the code into your terminal for the respectiv
 This application is rendered under MIT
 
 ## Contributors
-To contribute to deep-thoughts, clone this repo locally and commit your code on a separate branch.
+To contribute to health-fusion, clone this repo locally and commit your code on a separate branch.
   
 Contributors:
 
-<a href="https://github.com/jdeschat/deep-thoughts/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=jdeschat/deep-thoughts" />
+<a href="https://github.com/utor2021/health-fusion/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=utor2021/health-fusion" />
 </a>
 
 Made with [contributors-img](https://contrib.rocks).
@@ -66,8 +66,8 @@ Made with [contributors-img](https://contrib.rocks).
 •	JSON Web Token
 •	Nodemon
 
-My Github username is jdeschat, which can be accessed here https://github.com/jdeschat/deep-thoughts.
+Our Github username is utor2021, which can be accessed here https://github.com/utor2021/health-fusion.
 
-This app is deployed through Heroku, which can be accessed here https://deep-thoughts1284.herokuapp.com
+This app is deployed through Heroku, which can be accessed here https://health-fusion1284.herokuapp.com
 
-You can reach me at jdeschat@gmail.com with additional questions.
+You can reach us at utor2021@gmail.com with additional questions.
