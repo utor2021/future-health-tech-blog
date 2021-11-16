@@ -1,12 +1,18 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
-const thoughtSchema = new Schema(
+const discussionSchema = new Schema(
   {
-    thoughtText: {
+    topicTitle: {
       type: String,
-      required: 'You need to leave a thought!',
+      required: 'You need to create a title!',
+      minlength: 1,
+      maxlength: 50
+    },
+    ideaText: {
+      type: String,
+      required: 'You write an idea!',
       minlength: 1,
       maxlength: 280
     },
@@ -19,8 +25,9 @@ const thoughtSchema = new Schema(
       type: String,
       required: true
     },
-    reactions: [reactionSchema]
+    comments: [commentSchema]
   },
+  // not sure if we need this
   {
     toJSON: {
       getters: true
@@ -28,10 +35,10 @@ const thoughtSchema = new Schema(
   }
 );
 
-thoughtSchema.virtual('reactionCount').get(function() {
-  return this.reactions.length;
-});
+// thoughtSchema.virtual('reactionCount').get(function () {
+//   return this.reactions.length;
+// });
 
-const Thought = model('Thought', thoughtSchema);
+const Discussion = model('Discussion', discussionSchema);
 
-module.exports = Thought;
+module.exports = Discussion;
