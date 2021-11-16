@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought } = require('../models');
+const { User, Discussion } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,8 +8,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('thoughts')
-          .populate('friends');
+          .populate('discussions')
 
         return userData;
       }
@@ -19,21 +18,19 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('thoughts')
-        .populate('friends');
+        .populate('discussions')
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
-        .populate('friends')
-        .populate('thoughts');
+        .populate('discussions');
     },
-    thoughts: async (parent, { username }) => {
+    dicussions: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Discussion.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { _id }) => {
-      return Thought.findOne({ _id });
+    discussion: async (parent, { _id }) => {
+      return Discussion.findOne({ _id });
     }
   },
 
@@ -61,43 +58,30 @@ const resolvers = {
       return { token, user };
     },
     // ADD CATEGORIES
-    addThought: async (parent, args, context) => {
+    addDiscussion: async (parent, args, context) => {
       if (context.user) {
-        const thought = await Thought.create({ ...args, username: context.user.username });
+        const discussion = await Discussion.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { thoughts: thought._id } },
+          { $push: { discussions: discussion._id } },
           { new: true }
         );
 
-        return thought;
+        return discussion;
       }
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addReaction: async (parent, { thoughtId, reactionBody }, context) => {
+    addComment: async (parent, { discussionId, commentBody }, context) => {
       if (context.user) {
-        const updatedThought = await Thought.findOneAndUpdate(
-          { _id: thoughtId },
-          { $push: { reactions: { reactionBody, username: context.user.username } } },
+        const updatedDiscussion = await Discussion.findOneAndUpdate(
+          { _id: discussionId },
+          { $push: { comments: { commentBody, username: context.user.username } } },
           { new: true, runValidators: true }
         );
 
-        return updatedThought;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addFriend: async (parent, { friendId }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { friends: friendId } },
-          { new: true }
-        ).populate('friends');
-
-        return updatedUser;
+        return updatedDiscussion;
       }
 
       throw new AuthenticationError('You need to be logged in!');
