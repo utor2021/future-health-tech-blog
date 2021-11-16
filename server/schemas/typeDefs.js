@@ -43,7 +43,7 @@ const typeDefs = gql`
     addDiscussion(topicTitle: String!, ideaText: String!): Discussion
     removeDiscussion(discussionId: ID!): User
     addComment(discussionId: ID!, commentBody: String!): Discussion
-    removeComment(commentId: ID!): Discussion
+    removeComment(discussionId: ID!, commentId: ID!): Discussion
   }
 `;
 
