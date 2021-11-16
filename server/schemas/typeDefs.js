@@ -2,14 +2,14 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    _id: ID
+    _id: ID!
     username: String
     email: String
     discussions: [Discussion]
   }
 
   type Discussion {
-    discussionId: ID!
+    _id: ID!
     topicTitle: String
     ideaText: String
     createdAt: String
@@ -18,7 +18,7 @@ const typeDefs = gql`
   }
 
   type Comment {
-    commentId: ID
+    _id: ID!
     commentBody: String
     createdAt: String
     username: String
