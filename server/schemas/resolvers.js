@@ -99,11 +99,11 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeComment: async (parent, args, context) => {
+    removeComment: async (parent, { commentId }, context) => {
       if (context.user) {
         const updateDiscussion = await Discussion.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { comments: { _id: args._id } } },
+          { $pull: { comments: { _id: commentId } } },
           { new: true, runValidators: true, useFindAndModify: false }
         );
 

@@ -1,4 +1,4 @@
-# Deep thoughts
+# Health Fusion
 ## Description
 This project uses the MERN stack to use in a single application. This is a blog application called "Health fusion," where users can create an account, post their future of health technology ideas for others to see, and interact with other users through these ideas.
 
