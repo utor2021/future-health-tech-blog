@@ -1,71 +1,73 @@
-# Getting Started with Create React App
+# Deep thoughts
+## Description
+This project uses the MERN stack to use in a single application. This is a social media application called "Deep Thoughts," where users can create an account, post their thoughts for others to see, and interact with other users through these thoughts.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt text](https://github.com/jdeschat/deep-thoughts/blob/main/client/public/deep-thoughts.png)
 
-## Available Scripts
+## Table of Contents
+- [Description](#description)
+- [User Story](#user-story)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributors](#contributors)
+- [Tests](#tests)
+- [Technology Used](#technology-used)
+- [Questions](#questions)
 
-In the project directory, you can run:
+## User Story
+```
+AS A user
+I WANT to be able to post and discuss notes
+SO THAT I can interact with other users through these thoughts
+```
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To install this application, clone the code into your terminal for the respective repository. Then, install npm by entering the command ```npm install```  into the terminal. This will install all dependencies in the ```package.json```, in the root directory, required to run this application.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
+1. Visit the site at https://deep-thoughts1284.herokuapp.com
+2. Sign up for an account
+3. Once logged in, you can create a new thought and submit it hitting the "submit" button
+4. You can click to see or start a discussion on other users posts
+5. To logout, hit the "logout" button on the top right corner 
 
-### `npm test`
+## License
+This application is rendered under MIT
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributors
+To contribute to deep-thoughts, clone this repo locally and commit your code on a separate branch.
+  
+Contributors:
 
-### `npm run build`
+<a href="https://github.com/jdeschat/deep-thoughts/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jdeschat/deep-thoughts" />
+</a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Made with [contributors-img](https://contrib.rocks).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tests
+![GitHub license](https://img.shields.io/badge/test-100%25-success)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technology Used
+•	React
+•	Bootstrap
+•	Node
+•	Express
+•	HTML
+•	CSS
+•	Javascript
+•	JSX.
+•	Apollo Server GraphQL
+•	MongoDB
+•	Mongoose
+•	Faker
+•	JSON Web Token
+•	Nodemon
 
-### `npm run eject`
+My Github username is jdeschat, which can be accessed here https://github.com/jdeschat/deep-thoughts.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This app is deployed through Heroku, which can be accessed here https://deep-thoughts1284.herokuapp.com
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# future-health-tech-blog
+You can reach me at jdeschat@gmail.com with additional questions.
