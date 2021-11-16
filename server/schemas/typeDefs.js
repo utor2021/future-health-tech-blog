@@ -9,7 +9,7 @@ const typeDefs = gql`
   }
 
   type Discussion {
-    _id: ID
+    discussionId: ID!
     topicTitle: String
     ideaText: String
     createdAt: String
@@ -18,7 +18,7 @@ const typeDefs = gql`
   }
 
   type Comment {
-    _id: ID
+    commentId: ID
     commentBody: String
     createdAt: String
     username: String
@@ -34,16 +34,16 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     discussions(username: String): [Discussion]
-    discussion(_id: ID!): Discussion
+    discussion(discussionId: ID!): Discussion
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addDiscussion(topicTitle: String!, ideaText: String!): Discussion
-    removeDiscussion(_id: ID!): User
+    removeDiscussion(discussionId: ID!): User
     addComment(discussionId: ID!, commentBody: String!): Discussion
-    removeComment(_id: ID!): Discussion
+    removeComment(commentId: ID!): Discussion
   }
 `;
 

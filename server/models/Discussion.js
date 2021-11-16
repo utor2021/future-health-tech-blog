@@ -8,13 +8,13 @@ const discussionSchema = new Schema(
       type: String,
       required: 'You need to create a title!',
       minlength: 1,
-      maxlength: 50
+      maxlength: 100
     },
     ideaText: {
       type: String,
       required: 'You write an idea!',
       minlength: 1,
-      maxlength: 280
+      maxlength: 300
     },
     createdAt: {
       type: Date,

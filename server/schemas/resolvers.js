@@ -25,12 +25,12 @@ const resolvers = {
         .select('-__v -password')
         .populate('discussions');
     },
-    dicussions: async (parent, { username }) => {
+    discussions: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Discussion.find(params).sort({ createdAt: -1 });
     },
-    discussion: async (parent, { _id }) => {
-      return Discussion.findOne({ _id });
+    discussion: async (parent, { discussionId }) => {
+      return Discussion.findOne({ discussionId });
     }
   },
 
@@ -64,7 +64,7 @@ const resolvers = {
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { discussions: discussion._id } },
+          { $push: { discussions: discussion.discussionId } },
           { new: true }
         );
 
