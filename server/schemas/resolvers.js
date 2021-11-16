@@ -73,6 +73,19 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+    removeDiscussion: async (parent, args, context) => {
+      if (context.user) {
+        const updateUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { discussions: { _id: args._id } } },
+          { new: true, runValidators: true, useFindAndModify: false }
+        );
+
+        return updateUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addComment: async (parent, { discussionId, commentBody }, context) => {
       if (context.user) {
         const updatedDiscussion = await Discussion.findOneAndUpdate(
@@ -82,6 +95,19 @@ const resolvers = {
         );
 
         return updatedDiscussion;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeComment: async (parent, args, context) => {
+      if (context.user) {
+        const updateDiscussion = await Discussion.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { comments: { _id: args._id } } },
+          { new: true, runValidators: true, useFindAndModify: false }
+        );
+
+        return updateDiscussion;
       }
 
       throw new AuthenticationError('You need to be logged in!');

@@ -41,7 +41,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addDiscussion(topicTitle: String!, ideaText: String!): Discussion
+    removeDiscussion(_id: ID!): User
     addComment(discussionId: ID!, commentBody: String!): Discussion
+    removeComment(_id: ID!): Discussion
   }
 `;
 
