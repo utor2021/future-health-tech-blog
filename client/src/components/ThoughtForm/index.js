@@ -8,7 +8,6 @@ const ThoughtForm = ({ title }) => {
     const [ideaText, setIdeaText] = useState('');
     const [topicTitle, setTitleText] = useState(title);
     const [characterIdeaCount, setIdeaCharacterCount] = useState(0);
-    
 
     const [addDiscussion, { error }] = useMutation(ADD_DISCUSSION, {
         update(cache, { data: { addDiscussion } }) {
