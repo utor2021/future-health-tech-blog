@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ThoughtList = ({ discussions, title }) => {
-    if (!discussions.length) {
+    if (discussions == null && !discussions.length ) {
         return <h3>No Thoughts Yet</h3>;
     }
 

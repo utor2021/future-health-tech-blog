@@ -14,48 +14,46 @@ const Home = () => {
     return (
         <main>
             <div className="flex-row justify-space-between">
-                {loggedIn && (
-                    <div className="col-12 mb-3">
-                        <ul>
-                            <li>
-                                <Link
-                                    to={'/discussions?category=Artificial Intelligence'}
-                                >
-                                    1)	Artificial Intelligence
+                
+                <div className="col-12 mb-3">
+                    <ul>
+                        <li>
+                            <Link
+                                to={'/discussions?category=Artificial Intelligence'}
+                            >
+                                1)	Artificial Intelligence
                                 </Link>{' '}
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/discussions?category=Virtual Reality'}
-                                >
-                                    2)	Virtual Reality
+                        </li>
+                        <li>
+                            <Link
+                                to={'/discussions?category=Virtual Reality'}
+                            >
+                                2)	Virtual Reality
                                 </Link>{' '}
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/discussions?category=Self-knowledge'}
-                                >
-                                    3)	Self-knowledge
+                        </li>
+                        <li>
+                            <Link
+                                to={'/discussions?category=Self-knowledge'}
+                            >
+                                3)	Self-knowledge
                                 </Link>{' '}
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/discussions?category=mHealth'}
-                                >
-                                    4)	mHealth
+                        </li>
+                        <li>
+                            <Link
+                                to={'/discussions?category=mHealth'}
+                            >
+                                4)	mHealth
                                 </Link>{' '}
-                            </li>
-                            <li>
-                                <Link
-                                    to={'/discussions?category=Other'}
-                                >
-                                    5)	Other
+                        </li>
+                        <li>
+                            <Link
+                                to={'/discussions?category=Other'}
+                            >
+                                5)	Other
                                 </Link>{' '}
-                            </li>
-                        </ul>
-                    </div>
-                )}
-
+                        </li>
+                    </ul>
+                </div>
 
                 {loggedIn && userData ? (
                     <div className="col-12 col-lg-3 mb-3">

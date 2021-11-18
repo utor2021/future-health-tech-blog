@@ -8,7 +8,7 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
-                    .populate('discussions')
+                    .populate('Discussions')
 
                 return userData;
             }
@@ -18,17 +18,17 @@ const resolvers = {
         users: async () => {
             return User.find()
                 .select('-__v -password')
-                .populate('discussions')
+                .populate('Discussions')
         },
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password')
-                .populate('discussions');
+                .populate('Discussions');
         },
-        //discussions: async (parent, { username }) => {
-        //    const params = username ? { username } : {};
-        //    return Discussion.find(params).sort({ createdAt: -1 });
-        //},
+        discussionsall: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Discussion.find(params).sort({ createdAt: -1 });
+        },
         discussions: async (parent, { topicTitle }) => {
             const params = topicTitle ? { topicTitle } : {};
             return Discussion.find(params).sort({ createdAt: -1 });

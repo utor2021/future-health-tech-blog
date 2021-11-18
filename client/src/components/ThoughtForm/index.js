@@ -38,7 +38,11 @@ const ThoughtForm = ({ title }) => {
             setIdeaText(event.target.value);
             setIdeaCharacterCount(event.target.value.length);
         }
-        setTitleText(title);
+        
+    };
+     
+    const handleCatogryChange = event => {        
+            setTitleText(event.target.value);    
     };
     
 
@@ -71,7 +75,14 @@ const ThoughtForm = ({ title }) => {
                 className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit}
             >
-                <p>{topicTitle}</p>
+                
+                <select id="dropdown-basic-button" title="Catogry" onChange={handleCatogryChange} value={topicTitle}>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Virtual Reality">Virtual Reality</option>
+                    <option value="Self-knowledge">Self-knowledge</option>
+                    <option value="mHealth">mHealth</option>
+                    <option value="Other">Other</option>
+                </select>
                 <textarea
                     placeholder="Here's a new thought..."
                     value={ideaText}

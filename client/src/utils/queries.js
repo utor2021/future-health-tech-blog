@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const QUERY_DISCUSSIONS = gql`
-  query discussions($username: String) {
-    discussions(username: $username) {
+  query discussionsall($username: String) {
+    discussionsall(username: $username) {
       _id
       topicTitle
       ideaText
@@ -62,12 +62,7 @@ export const QUERY_USER = gql`
     user(username: $username) {
       _id
       username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
+      email     
       discussions {
         _id
         topicTitle
@@ -84,25 +79,14 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      email
-      friendCount
-      thoughts {
+      email      
+      discussions {
         _id
         topicTitle
         ideaText
         createdAt
-        commentCount
-        comments {
-          _id
-          createdAt
-          commentBody
-          username
-        }
-      }
-      friends {
-        _id
-        username
-      }
+        commentCount        
+      }      
     }
   }
 `;
@@ -112,12 +96,7 @@ export const QUERY_ME_BASIC = gql`
     me {
       _id
       username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
+      email     
     }
   }
 `;
