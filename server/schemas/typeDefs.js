@@ -14,6 +14,7 @@ const typeDefs = gql`
     ideaText: String
     createdAt: String
     username: String
+    commentCount: Int
     comments: [Comment]
   }
 
@@ -33,8 +34,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    discussions(username: String): [Discussion]
-    discussion(discussionId: ID!): Discussion
+    discussions(topicTitle: String!): [Discussion]
+    discussion(_id: ID!): Discussion
   }
 
   type Mutation {
