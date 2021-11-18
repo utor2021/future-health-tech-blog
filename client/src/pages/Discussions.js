@@ -34,6 +34,7 @@ const Discussions = () => {
                     ) : (
                             <ThoughtList discussions={discussions} title={categoryId}/>
                         )}
+                        
                 </div>
 
                 {loggedIn && userData ? (
