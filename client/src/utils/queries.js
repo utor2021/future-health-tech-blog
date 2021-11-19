@@ -1,36 +1,57 @@
 import gql from 'graphql-tag';
 
-export const QUERY_THOUGHTS = gql`
-  query thoughts($username: String) {
-    thoughts(username: $username) {
+export const QUERY_DISCUSSIONS = gql`
+  query discussionsall($username: String) {
+    discussionsall(username: $username) {
       _id
-      thoughtText
+      topicTitle
+      ideaText
       createdAt
       username
-      reactionCount
-      reactions {
+      commentCount
+      comments {
         _id
         createdAt
         username
-        reactionBody
+        commentBody
+      }
+    } 
+  }
+`;
+
+export const QUERY_DISCUSSIONS_TITLE = gql`
+  query discussions($topicTitle: String!) {
+    discussions(topicTitle: $topicTitle) {
+      _id
+      topicTitle
+      ideaText
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentBody
       }
     }
   }
 `;
 
-export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
+export const QUERY_DISCUSSION = gql`
+  query discussion($id: ID!) {
+    discussion(_id: $id) {
       _id
-      thoughtText
+      topicTitle
+      ideaText
       createdAt
       username
-      reactionCount
-      reactions {
+      commentCount
+      comments {
         _id
         createdAt
         username
-        reactionBody
+        commentBody
       }
     }
   }
@@ -41,17 +62,13 @@ export const QUERY_USER = gql`
     user(username: $username) {
       _id
       username
-      email
-      friendCount
-      friends {
+      email     
+      discussions {
         _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
+        topicTitle
+        ideaText
         createdAt
-        reactionCount
+        commentCount
       }
     }
   }
@@ -62,24 +79,14 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      email
-      friendCount
-      thoughts {
+      email      
+      discussions {
         _id
-        thoughtText
+        topicTitle
+        ideaText
         createdAt
-        reactionCount
-        reactions {
-          _id
-          createdAt
-          reactionBody
-          username
-        }
-      }
-      friends {
-        _id
-        username
-      }
+        commentCount        
+      }      
     }
   }
 `;
@@ -89,12 +96,7 @@ export const QUERY_ME_BASIC = gql`
     me {
       _id
       username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
+      email     
     }
   }
 `;
