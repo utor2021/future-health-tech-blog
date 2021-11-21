@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
+import HealthFusionLogo from '../../assets/health_fusion_logo.png';
 
 const Header = () => {
   const logout = event => {
@@ -10,9 +11,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <Link to="/">
+    <header className="bg-secondary mb-4 py-2 align-center header">
+      <div className="container flex-row justify-space-between-lg justify-center align-center header-content">
+        <Link to="/" className={"header-link"}>
+          <img src={HealthFusionLogo} alt="" height={150}/>
           <h1>Health Fusion</h1>
         </Link>
 

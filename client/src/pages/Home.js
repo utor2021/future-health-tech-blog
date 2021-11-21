@@ -13,7 +13,7 @@ const Home = () => {
 
     return (
         <main>
-            <div className="flex-row justify-space-between">
+            <div className="flex-row justify-space-between align-center">
                 
                 <div className="col-12 mb-3">
                     <ul>
@@ -21,35 +21,35 @@ const Home = () => {
                             <Link
                                 to={'/discussions?category=Artificial Intelligence'}
                             >
-                                1)	Artificial Intelligence
+                                Artificial Intelligence
                                 </Link>{' '}
                         </li>
                         <li>
                             <Link
                                 to={'/discussions?category=Virtual Reality'}
                             >
-                                2)	Virtual Reality
+                                Virtual Reality
                                 </Link>{' '}
                         </li>
                         <li>
                             <Link
                                 to={'/discussions?category=Self-knowledge'}
                             >
-                                3)	Self-knowledge
+                                Self-knowledge
                                 </Link>{' '}
                         </li>
                         <li>
                             <Link
                                 to={'/discussions?category=mHealth'}
                             >
-                                4)	mHealth
+                                mHealth
                                 </Link>{' '}
                         </li>
                         <li>
                             <Link
                                 to={'/discussions?category=Other'}
                             >
-                                5)	Other
+                                Other
                                 </Link>{' '}
                         </li>
                     </ul>
