@@ -1,6 +1,6 @@
 :root {
   --primary: #497573;
-  --secondary: #99f7f2;
+  --secondary: #d9d9d9;
   --tertiary: #b2c2c1;
   --quatrinary: #cadbda;
   --light: #e1f5f4;
@@ -1246,5 +1246,25 @@ nav a:hover {
 
   .align-center-xl {
     align-items: center;
+  }
+
+  .header {
+    height: 150px;
+    display: flex;
+  }
+
+  .header-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
   }
 }
