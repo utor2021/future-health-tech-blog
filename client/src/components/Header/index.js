@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="bg-secondary mb-4 py-2 align-center header">
       <div className="container flex-row justify-space-between-lg justify-center align-center header-content">
-        <Link to="/Health" className={"header-link"}>
+        <Link to="/" className={"header-link"}>
           <img src={HealthFusionLogo} alt="" height={150}/>
           <h1>Health Fusion</h1>
         </Link>
