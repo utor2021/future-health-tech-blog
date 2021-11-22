@@ -10,6 +10,7 @@ const Home = () => {
     const { data: userData } = useQuery(QUERY_ME_BASIC);
 
     const loggedIn = Auth.loggedIn();
+    console.log("Random", userData);
 
     return (
         <main>
@@ -55,7 +56,7 @@ const Home = () => {
                     </ul>
                 </div>
 
-                {loggedIn && userData ? (
+                {loggedIn && userData && userData?.me !== null ? (
                     <div className="col-12 col-lg-3 mb-3">
                         <FriendList
                             username={userData.me.username}
