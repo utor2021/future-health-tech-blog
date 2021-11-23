@@ -46,7 +46,7 @@ console.log(userProfile.data.username);
                                 <p>{discussion.topicTitle}</p>
                                 <p>{discussion.ideaText}</p>
                                 <p className="mb-0">
-                                    Reactions: {discussion.commentCount} || Click to{' '}
+                                    Comments: {discussion.commentCount} || Click to{' '}
                                     {discussion.commentCount ? 'see' : 'start'} the discussion!
                                 </p>
                             </Link>
