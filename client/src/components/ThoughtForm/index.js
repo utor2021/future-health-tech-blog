@@ -91,7 +91,7 @@ const ThoughtForm = ({ title }) => {
                 ></textarea>
                 <button className="btn col-12 col-md-3" type="submit">
                     Submit
-        </button>
+                </button>               
             </form>
         </div>
     );
