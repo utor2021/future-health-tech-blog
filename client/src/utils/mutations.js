@@ -40,6 +40,26 @@ export const ADD_DISCUSSION = gql`
   }
 `;
 
+export const REMOVE_DISCUSSION = gql`
+  mutation removeDiscussion($discussionId: ID!) {
+    removeDiscussion(discussionId: $discussionId) {
+    _id
+    username
+    email
+    discussions {
+      _id
+      topicTitle
+      ideaText
+      createdAt
+      username
+    }
+    }
+  }
+`;
+
+
+
+
 export const ADD_COMMENT = gql`
   mutation addComment($discussionId: ID!, $commentBody: String!) {
     addComment(discussionId: $discussionId, commentBody: $commentBody) {

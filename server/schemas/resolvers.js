@@ -77,14 +77,17 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        removeDiscussion: async (parent, args, context) => {
+        removeDiscussion: async (parent, {discussionId}, context) => {
+            console.log(discussionId);
+            console.log(context.user);
             if (context.user) {
                 const updateUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { discussions: { _id: args._id } } },
-                    { new: true, runValidators: true, useFindAndModify: false }
+                    { $pull: { discussions: { discussionId } } },
+                    { new: true }
                 );
-
+            console.log(updateUser);
+            const deleteDiscussion = await Discussion.deleteOne({_id: discussionId});
                 return updateUser;
             }
 
