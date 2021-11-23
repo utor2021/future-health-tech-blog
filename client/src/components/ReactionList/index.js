@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ReactionList = ({ reactions }) => {
+const ReactionList = ({ comments }) => {
+    console.log(comments)
   return (
     <div className="card mb-3">
       <div className="card-header">
-        <span className="text-light">Reactions</span>
+        <span className="text-light">Comments</span>
       </div>
       <div className="card-body">
-        {reactions &&
-          reactions.map(reaction => (
-            <p className="pill mb-3" key={reaction._id}>
-              {reaction.reactionBody} //{' '}
-              <Link to={`/profile/${reaction.username}`} style={{ fontWeight: 700 }}>
-                {reaction.username} on {reaction.createdAt}
+              {comments &&
+                  comments.map(comment => (
+            <p className="pill mb-3" key={comment._id}>
+                          {comment.commentBody} <br/>
+              <Link to={`/profile/${comment.username}`} style={{ fontWeight: 700 }}>
+                {comment.username} on {comment.createdAt}
               </Link>
             </p>
           ))}

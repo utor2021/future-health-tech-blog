@@ -35,9 +35,9 @@ const discussionSchema = new Schema(
   }
 );
 
-// thoughtSchema.virtual('reactionCount').get(function () {
-//   return this.reactions.length;
-// });
+discussionSchema.virtual('commentCount').get(function () {
+   return this.comments.length;
+ });
 
 const Discussion = model('Discussion', discussionSchema);
 
