@@ -58,17 +58,17 @@ const resolvers = {
       return { token, user };
     },
     // ADD CATEGORIES
-    addDiscussion: async (parent, args, context) => {
+    addDiscussion: async (parent, {topicTitle, ideaText}, context) => {
       if (context.user) {
-        const discussion = await Discussion.create({ ...args, username: context.user.username });
-
-        await User.findByIdAndUpdate(
+        // const discussion = await Discussion.create({ topicTitle: topicTitle, ideaText:ideaText, username: context.user.username });
+        
+        let updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { discussions: discussion.discussionId } },
+          { $push: { discussions: {topicTitle, ideaText, username: context.user.username} }},
           { new: true }
         );
 
-        return discussion;
+        return updatedUser;
       }
 
       throw new AuthenticationError('You need to be logged in!');
