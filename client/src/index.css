@@ -2,7 +2,7 @@
   --primary: #497573;
   --secondary: #d9d9d9;
   --tertiary: #b2c2c1;
-  --quatrinary: #cadbda;
+  --quatrinary: #959997;
   --light: #e1f5f4;
   --dark: #0400fc;
   --error: rgb(228, 46, 1);
@@ -26,7 +26,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Times', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 20px;
@@ -40,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Karla', sans-serif;
+  font-family: 'Times', sans-serif;
   font-weight: 700;
   margin: 5px 0;
   line-height: 1.25;
@@ -144,8 +144,8 @@ nav a:hover {
 .card-header {
   color: var(--secondary);
   margin: 0;
-  background-color: var(--dark);
-  padding: 0.625rem;
+  background-color: var(--quatrinary);
+  padding: 0.25rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 

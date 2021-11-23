@@ -44,8 +44,8 @@ const userProfile = Auth.getProfile();
                                 <p>{discussion.topicTitle}</p>
                                 <p>{discussion.ideaText}</p>
                                 <p className="mb-0">
-                                    Comments: {discussion.commentCount} || Click to{' '}
-                                    {discussion.commentCount ? 'see' : 'start'} the discussion!
+                                    Comments: {discussion.commentCount} || Share your{' '}
+                                    {discussion.commentCount ? 'see' : 'start'} thoughts here!
                                 </p>
                             </Link>
                         </div>
