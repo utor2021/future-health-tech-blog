@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '../../assets/delete.png';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_DISCUSSION } from '../../utils/mutations';
@@ -22,8 +23,6 @@ const ThoughtList = ({ discussions, title }) => {
         }
     }
 const userProfile = Auth.getProfile();
-console.log(userProfile);
-console.log(userProfile.data.username);
     return (
         <div>
             <h3>{title}</h3>
@@ -38,16 +37,16 @@ console.log(userProfile.data.username);
                             >
                                 {discussion.username}
                             </Link>{' '}
-              discussion on {discussion.createdAt}
-                            {discussion.username === userProfile.data.username ? <button onClick={()=>deleteDiscussion(discussion._id)}>delete</button> : ""}
+              discussed on {discussion.createdAt}
+                            {Auth.loggedIn() ? <button className="ml-2 left-button" onClick={() => deleteDiscussion(discussion._id)}><img src={DeleteIcon} alt="" height={20} /></button> : ""}
                         </p>
                         <div className="card-body">
                             <Link to={`/discussion/${discussion._id}`}>
                                 <p>{discussion.topicTitle}</p>
                                 <p>{discussion.ideaText}</p>
                                 <p className="mb-0">
-                                    Comments: {discussion.commentCount} || Click to{' '}
-                                    {discussion.commentCount ? 'see' : 'start'} the discussion!
+                                    Comments: {discussion.commentCount} || Share your{' '}
+                                    {discussion.commentCount ? 'see' : 'start'} thoughts here!
                                 </p>
                             </Link>
                         </div>

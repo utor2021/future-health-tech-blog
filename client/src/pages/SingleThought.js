@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import ReactionList from '../components/ReactionList';
 import ReactionForm from '../components/ReactionForm';
+import DiscussionMenu from '../components/DiscussionMenu';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
@@ -21,14 +22,16 @@ const SingleThought = () => {
         return <div>Loading...</div>;
     }
 
-  return (
-    <div>
-      <div className="card mb-3">
+    return (
+        
+        <div>
+            <DiscussionMenu />
+      <div className="card mb-3 mt-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
                       {discussion.username}
           </span>{' '}
-          thought on {discussion.createdAt}
+          discussed on {discussion.createdAt}
         </p>
               <div className="card-body">
                   <p>{discussion.topicTitle}</p>
