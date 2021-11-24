@@ -5,10 +5,10 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_DISCUSSION } from '../../utils/mutations';
 
-const ThoughtList = ({ discussions, title }) => {
+const DiscussionList = ({ discussions, title }) => {
     const [removeDiscussion] = useMutation(REMOVE_DISCUSSION);
     if (discussions == null && !discussions.length ) {
-        return <h3>No Thoughts Yet</h3>;
+        return <h3>No Discussions Yet</h3>;
     }
     const deleteDiscussion = async (discussionId) => {
         console.log(discussionId);
@@ -46,7 +46,7 @@ const userProfile = Auth.getProfile();
                                 <p>{discussion.ideaText}</p>
                                 <p className="mb-0">
                                     Comments: {discussion.commentCount} || Share your{' '}
-                                    {discussion.commentCount ? 'see' : 'start'} thoughts here!
+                                    {discussion.commentCount ? 'see' : 'start'} discussions here!
                                 </p>
                             </Link>
                         </div>
@@ -56,4 +56,4 @@ const userProfile = Auth.getProfile();
     );
 };
 
-export default ThoughtList;
+export default DiscussionList;

@@ -1,15 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import ReactionList from '../components/ReactionList';
-import ReactionForm from '../components/ReactionForm';
+import CommentList from '../components/CommentList';
+import CommentForm from '../components/CommentForm';
 import DiscussionMenu from '../components/DiscussionMenu';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_DISCUSSION } from '../utils/queries';
 
-const SingleThought = () => {
+const SingleDiscussion = () => {
     const { id: discussionId } = useParams();
 
     const { loading, data } = useQuery(QUERY_DISCUSSION, {
@@ -39,11 +39,11 @@ const SingleThought = () => {
         </div>
       </div>
 
-          {discussion.commentCount > 0 && <ReactionList comments={discussion.comments} />}
+          {discussion.commentCount > 0 && <CommentList comments={discussion.comments} />}
 
-          {Auth.loggedIn() && <ReactionForm discussionId={discussion._id} />}
+          {Auth.loggedIn() && <CommentForm discussionId={discussion._id} />}
     </div>
   );
 };
 
-export default SingleThought;
+export default SingleDiscussion;
