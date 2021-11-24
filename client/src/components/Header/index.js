@@ -11,7 +11,7 @@ const Header = () => {
     };
     let username;
     if (Auth.loggedIn()) {
-      username = Auth.getProfile().data;
+      username = Auth.getProfile()?.data;
     } else {
       username = "";
     }
