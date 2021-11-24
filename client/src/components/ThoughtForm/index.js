@@ -1,83 +1,107 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_DISCUSSION } from '../../utils/mutations';
+import { QUERY_DISCUSSIONS, QUERY_ME } from '../../utils/queries';
 
-const ThoughtForm = () => {
-  const [thoughtText, setText] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
+const ThoughtForm = ({ title }) => {
+    const [ideaText, setIdeaText] = useState('');
+    const [topicTitle, setTitleText] = useState(title);
+    const [characterIdeaCount, setIdeaCharacterCount] = useState(0);
 
-  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-    update(cache, { data: { addThought } }) {
-      try {
-        // update thought array's cache
-        // could potentially not exist yet, so wrap in a try/catch
-        const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
-        cache.writeQuery({
-          query: QUERY_THOUGHTS,
-          data: { thoughts: [addThought, ...thoughts] }
-        });
-      } catch (e) {
-        console.error(e);
-      }
+    const [addDiscussion, { error }] = useMutation(ADD_DISCUSSION, {
+        update(cache, { data: { addDiscussion } }) {
+            try {
+                // update thought array's cache
+                // could potentially not exist yet, so wrap in a try/catch
+                const { discussions } = cache.readQuery({ query: QUERY_DISCUSSIONS });
+                cache.writeQuery({
+                    query: QUERY_DISCUSSIONS,
+                    data: { discussions: [addDiscussion, ...discussions] }
+                });
+            } catch (e) {
+                console.error(e);
+            }
 
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } }
-      });
-    }
-  });
+            // update me object's cache
+            const { me } = cache.readQuery({ query: QUERY_ME });
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: { me: { ...me, discussions: [...me.discussions, addDiscussion] } }
+            });
+        }
+    });
 
-  // update state based on form input changes
-  const handleChange = event => {
-    if (event.target.value.length <= 280) {
-      setText(event.target.value);
-      setCharacterCount(event.target.value.length);
-    }
-  };
+    // update state based on form input changes
+    const handleIdeaChange = event => {
+        if (event.target.value.length <= 300) {
+            setIdeaText(event.target.value);
+            setIdeaCharacterCount(event.target.value.length);
+        }
 
-  // submit form
-  const handleFormSubmit = async event => {
-    event.preventDefault();
+    };
 
-    try {
-      await addThought({
-        variables: { thoughtText }
-      });
+    const handleCatogryChange = event => {
+        setTitleText(event.target.value);
+    };
 
-      // clear form value
-      setText('');
-      setCharacterCount(0);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
-  return (
-    <div>
-      <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/280
-        {error && <span className="ml-2">Something went wrong...</span>}
-      </p>
-      <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={handleFormSubmit}
-      >
-        <textarea
-          placeholder="Here's a new thought..."
-          value={thoughtText}
-          className="form-input col-12 col-md-9"
-          onChange={handleChange}
-        ></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+    // submit form
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+
+
+        try {
+            await addDiscussion({
+                variables: { ideaText, topicTitle }
+            });
+
+            // clear form value
+            setIdeaText('');
+            setIdeaCharacterCount(0);
+
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    return (
+        <div className="card new-discussion">
+            <p className="card-header"> Start a Discussion</p>
+            <p className={`m-0 ml-2 col-11 ${characterIdeaCount === 280 || error ? 'text-error' : ''} `}>
+                Character Count: {characterIdeaCount}/280
+                    {error && <span className="ml-2">Something went wrong...</span>}
+            </p>
+            <form
+                className=""
+                onSubmit={handleFormSubmit}
+            >
+
+                <div className="col-11 ml-2 mr-2">
+                    <select id="dropdown-basic-button" title="Catogry" onChange={handleCatogryChange} value={topicTitle}>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Virtual Reality">Virtual Reality</option>
+                        <option value="Self-knowledge">Self-knowledge</option>
+                        <option value="mHealth">mHealth</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div className="col-11 ml-2 mr-2">
+                <textarea
+                    placeholder="Here's a new discussion..."
+                    value={ideaText}
+                    className="form-input col-10 col-md-9"
+                    onChange={handleIdeaChange}
+                    ></textarea>
+                </div>
+                <div className="flex-row justify-center" >
+                <button className="btn ml-2 mr-2 " type="submit">
+                        Submit
+                </button>
+                    </div>
+            </form>
+        </div>
+    );
 };
 
 export default ThoughtForm;
