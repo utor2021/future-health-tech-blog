@@ -38,71 +38,6 @@ const resolvers = {
         }
     },
 
-<<<<<<< HEAD
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const token = signToken(user);
-      return { token, user };
-    },
-    // ADD CATEGORIES
-    addDiscussion: async (parent, {topicTitle, ideaText}, context) => {
-      if (context.user) {
-        // const discussion = await Discussion.create({ topicTitle: topicTitle, ideaText:ideaText, username: context.user.username });
-        
-        let updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { discussions: {topicTitle, ideaText, username: context.user.username} }},
-          { new: true }
-        );
-
-        return updatedUser;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeDiscussion: async (parent, args, context) => {
-      if (context.user) {
-        const updateUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { discussions: { _id: args._id } } },
-          { new: true, runValidators: true, useFindAndModify: false }
-        );
-
-        return updateUser;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addComment: async (parent, { discussionId, commentBody }, context) => {
-      if (context.user) {
-        const updatedDiscussion = await Discussion.findOneAndUpdate(
-          { _id: discussionId },
-          { $push: { comments: { commentBody, username: context.user.username } } },
-          { new: true, runValidators: true }
-        );
-
-        return updatedDiscussion;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeComment: async (parent, { discussionId, commentId }, context) => {
-      if (context.user) {
-        const updateDiscussion = await Discussion.findOneAndUpdate(
-          { _id: discussionId },
-          { $pull: { comments: { _id: commentId } } },
-          { new: true }
-        );
-
-        return updateDiscussion;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-=======
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
@@ -184,7 +119,6 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         }
->>>>>>> 876ae39a466b634e2785ce31e6c4421273d3e9b5
     }
 };
 
