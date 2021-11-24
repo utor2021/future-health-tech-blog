@@ -34,7 +34,6 @@ const DiscussionForm = ({ title }) => {
 
     // update state based on form input changes
     const handleIdeaChange = event => {
-        event.preventDefault();
         if (event.target.value.length <= 300) {
             setIdeaText(event.target.value);
             setIdeaCharacterCount(event.target.value.length);
@@ -43,17 +42,16 @@ const DiscussionForm = ({ title }) => {
     };
 
     // submit form
-    const handleFormSubmit = event => {
+    const handleFormSubmit = async event => {
         event.preventDefault();
         try {
-            addDiscussion({
-                variables: { ideaText, topicTitle, title }
+            await addDiscussion({
+                variables: { ideaText, topicTitle }
             });
 
             // clear form value
             setIdeaText('');
             setIdeaCharacterCount(0);
-            setTitleText(event.target.value.length);
 
         } catch (e) {
             console.error(e);
