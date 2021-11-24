@@ -1,6 +1,8 @@
 import React from 'react';
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
+import DiscussionMenu from '../components/DiscussionMenu';
+
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
@@ -21,6 +23,7 @@ const Discussions = () => {
     
     return (
         <main>
+            <DiscussionMenu />
             <div className="flex-row justify-space-between">
                 
                 {loggedIn && (

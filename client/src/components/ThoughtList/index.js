@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '../../assets/delete.png';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_DISCUSSION } from '../../utils/mutations';
@@ -36,8 +37,8 @@ const userProfile = Auth.getProfile();
                             >
                                 {discussion.username}
                             </Link>{' '}
-              discussion on {discussion.createdAt}
-                            {discussion.username === userProfile?.data?.username ? <button onClick={()=>deleteDiscussion(discussion._id)}>delete</button> : ""}
+              discussed on {discussion.createdAt}
+                            {Auth.loggedIn() ? <button className="ml-2 left-button" onClick={() => deleteDiscussion(discussion._id)}><img src={DeleteIcon} alt="" height={20} /></button> : ""}
                         </p>
                         <div className="card-body">
                             <Link to={`/discussion/${discussion._id}`}>
