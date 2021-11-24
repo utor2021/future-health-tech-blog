@@ -1,17 +1,17 @@
 :root {
-  --primary: #497573;
-  --secondary: #d9d9d9;
-  --tertiary: #b2c2c1;
-  --quatrinary: #cadbda;
-  --light: #e1f5f4;
-  --dark: #0400fc;
-  --error: rgb(228, 46, 1);
-  --border-radius: 0.3rem;
-  --spacing-one: calc(1rem * 0.25);
-  --spacing-two: calc(1rem * 0.5);
-  --spacing-three: 1rem;
-  --spacing-four: calc(1rem * 1.5);
-  --spacing-five: calc(1rem * 3);
+    --primary: #80475e;
+    --secondary: #E9C9D6;
+    --tertiary: #b2c2c1;
+    --quatrinary: #41093A;
+    --light: #EEA9C5;
+    --dark: #505050;
+    --error: rgb(228, 46, 1);
+    --border-radius: 0.5rem;
+    --spacing-one: calc(1rem * 0.25);
+    --spacing-two: calc(1rem * 0.5);
+    --spacing-three: 1rem;
+    --spacing-four: calc(1rem * 1.5);
+    --spacing-five: calc(1rem * 3);
 }
 
 * {
@@ -26,7 +26,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Times', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 20px;
@@ -40,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Karla', sans-serif;
+  font-family: 'Times', sans-serif;
   font-weight: 700;
   margin: 5px 0;
   line-height: 1.25;
@@ -144,8 +144,8 @@ nav a:hover {
 .card-header {
   color: var(--secondary);
   margin: 0;
-  background-color: var(--dark);
-  padding: 0.625rem;
+  background-color: var(--quatrinary);
+  padding: 0.25rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
@@ -1270,4 +1270,39 @@ nav a:hover {
     color: black;
     font-weight: bold;
   }
+}
+
+.discussion-menu div{
+    display:inline;
+}
+.discussion-menu a {
+    border: 1px solid var(--dark);
+    border-radius: var(--border-radius);
+    padding: 5px;
+    margin-right:20px;
+    width:200px;
+}
+.new-discussion {
+    margin-top:30px;
+}
+    .new-discussion select {
+        padding: 10px;
+        border: 1px solid var(--dark);
+        border-radius: var(--border-radius);
+        color: var(--dark);
+    }
+.discussion-button{
+    float:right;
+}
+.discussion-home a {
+    border: 1px solid var(--dark);
+    border-radius: var(--border-radius);
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+}
+.left-button {
+    display: inline;
+    float: right;
+    background-color: var(--secondary);
 }

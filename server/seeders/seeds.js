@@ -35,7 +35,7 @@ db.once('open', async () => {
   //  await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
   //}
 
-  // create thoughts
+  // create discussions
     let createdDiscussions = [];
   for (let i = 0; i < 100; i += 1) {
       const ideaText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
@@ -55,7 +55,7 @@ db.once('open', async () => {
       createdDiscussions.push(createdDiscussion);
   }
 
-  // create reactions
+  // create comments
   for (let i = 0; i < 100; i += 1) {
       const commentBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 

@@ -1,6 +1,8 @@
 import React from 'react';
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+import DiscussionList from '../components/DiscussionList';
+import DiscussionForm from '../components/DiscussionForm';
+import DiscussionMenu from '../components/DiscussionMenu';
+
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
@@ -21,18 +23,19 @@ const Discussions = () => {
     
     return (
         <main>
+            <DiscussionMenu />
             <div className="flex-row justify-space-between">
                 
                 {loggedIn && (
                     <div className="col-12 mb-3">
-                        <ThoughtForm title={categoryId} />
+                        <DiscussionForm title={categoryId} />
                     </div>
                 )}
                 <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
                     {loading ? (
                         <div>Loading...</div>
                     ) : (
-                            <ThoughtList discussions={discussions} title={categoryId}/>
+                            <DiscussionList discussions={discussions} title={categoryId}/>
                         )}
                 </div>
 
