@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Discussions from './pages/Discussions';
 import NoMatch from './pages/NoMatch';
-import SingleThought from './pages/SingleThought';
+import SingleDiscussion from './pages/SingleDiscussion';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 
@@ -40,7 +40,7 @@ function App() {
                             <Route exact path="/signup" component={Signup} />
                             <Route exact path="/discussions" component={Discussions} />
                             <Route exact path="/profile/:username?" component={Profile} />
-                            <Route exact path="/discussion/:id" component={SingleThought} />
+                            <Route exact path="/discussion/:id" component={SingleDiscussion} />
 
                             <Route component={NoMatch} />
                         </Switch>

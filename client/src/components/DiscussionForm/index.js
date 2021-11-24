@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_DISCUSSION } from '../../utils/mutations';
 import { QUERY_DISCUSSIONS, QUERY_ME } from '../../utils/queries';
 
-const ThoughtForm = ({ title }) => {
+const DiscussionForm = ({ title }) => {
     const [ideaText, setIdeaText] = useState('');
     const [topicTitle, setTitleText] = useState(title);
     const [characterIdeaCount, setIdeaCharacterCount] = useState(0);
@@ -12,7 +12,7 @@ const ThoughtForm = ({ title }) => {
     const [addDiscussion, { error }] = useMutation(ADD_DISCUSSION, {
         update(cache, { data: { addDiscussion } }) {
             try {
-                // update thought array's cache
+                // update discussion array's cache
                 // could potentially not exist yet, so wrap in a try/catch
                 const { discussions } = cache.readQuery({ query: QUERY_DISCUSSIONS });
                 cache.writeQuery({
@@ -34,6 +34,7 @@ const ThoughtForm = ({ title }) => {
 
     // update state based on form input changes
     const handleIdeaChange = event => {
+        event.preventDefault();
         if (event.target.value.length <= 300) {
             setIdeaText(event.target.value);
             setIdeaCharacterCount(event.target.value.length);
@@ -41,24 +42,18 @@ const ThoughtForm = ({ title }) => {
 
     };
 
-    const handleCatogryChange = event => {
-        setTitleText(event.target.value);
-    };
-
-
     // submit form
-    const handleFormSubmit = async event => {
+    const handleFormSubmit = event => {
         event.preventDefault();
-
-
         try {
-            await addDiscussion({
-                variables: { ideaText, topicTitle }
+            addDiscussion({
+                variables: { ideaText, topicTitle, title }
             });
 
             // clear form value
             setIdeaText('');
             setIdeaCharacterCount(0);
+            setTitleText(event.target.value.length);
 
         } catch (e) {
             console.error(e);
@@ -76,16 +71,6 @@ const ThoughtForm = ({ title }) => {
                 className=""
                 onSubmit={handleFormSubmit}
             >
-
-                <div className="col-11 ml-2 mr-2">
-                    <select id="dropdown-basic-button" title="Catogry" onChange={handleCatogryChange} value={topicTitle}>
-                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                        <option value="Virtual Reality">Virtual Reality</option>
-                        <option value="Self-knowledge">Self-knowledge</option>
-                        <option value="mHealth">mHealth</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
                 <div className="col-11 ml-2 mr-2">
                 <textarea
                     placeholder="Here's a new discussion..."
@@ -104,4 +89,4 @@ const ThoughtForm = ({ title }) => {
     );
 };
 
-export default ThoughtForm;
+export default DiscussionForm;

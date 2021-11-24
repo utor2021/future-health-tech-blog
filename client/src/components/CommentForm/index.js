@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_COMMENT } from '../../utils/mutations';
 
-const ReactionForm = ({ discussionId }) => {
+const CommentForm = ({ discussionId }) => {
     const [commentBody, setBody] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [addComment, { error }] = useMutation(ADD_COMMENT);
@@ -64,4 +64,4 @@ const ReactionForm = ({ discussionId }) => {
     );
 };
 
-export default ReactionForm;
+export default CommentForm;

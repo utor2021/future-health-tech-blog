@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ReactionList = ({ comments }) => {
+const CommentList = ({ comments }) => {
     console.log(comments)
   return (
     <div className="card mb-3">
@@ -23,4 +23,4 @@ const ReactionList = ({ comments }) => {
   );
 };
 
-export default ReactionList;
+export default CommentList;
