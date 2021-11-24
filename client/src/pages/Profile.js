@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import ThoughtForm from '../components/ThoughtForm';
-import ThoughtList from '../components/ThoughtList';
+import DiscussionForm from '../components/DiscussionForm';
+import DiscussionList from '../components/DiscussionList';
 
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USER, QUERY_ME, QUERY_DISCUSSIONS } from '../utils/queries';
@@ -61,14 +61,14 @@ const Profile = props => {
 
             <div className="flex-row justify-space-between mb-3">
                 <div className="col-12 mb-3 col-lg-8">
-                    <ThoughtList discussions={dis} title={`${user.username}'s thoughts...`} />
+                    <DiscussionList discussions={dis} title={`${user.username}'s ideas...`} />
                 </div>
 
                 <div className="col-12 col-lg-3 mb-3">
 
                 </div>
             </div>
-            <div className="mb-3">{!userParam && <ThoughtForm />}</div>
+            <div className="mb-3">{!userParam && <DiscussionForm />}</div>
         </div>
     );
 };

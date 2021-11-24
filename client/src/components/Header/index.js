@@ -8,7 +8,8 @@ const Header = () => {
   const logout = event => {
     event.preventDefault();
     Auth.logout();
-  };
+    };
+    const username = Auth.getProfile().data;
 
   return (
     <header className="bg-secondary mb-4 py-2 align-center header">
@@ -20,8 +21,8 @@ const Header = () => {
 
         <nav className="text-center">
           {Auth.loggedIn() ? (
-            <>
-              <Link to="/profile">Me</Link>
+                      <>
+                          <Link to="/profile">{username.username}</Link>
               <a href="/" onClick={logout}>
                 Logout
               </a>
