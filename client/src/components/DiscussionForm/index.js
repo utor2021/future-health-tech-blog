@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_DISCUSSION } from '../../utils/mutations';
 import { QUERY_DISCUSSIONS, QUERY_ME } from '../../utils/queries';
 
-const DiscussionForm = ({ title }) => {
+const DiscussionForm = ({ title, setDiscussion, discussions }) => {
     const [ideaText, setIdeaText] = useState('');
     const [topicTitle, setTitleText] = useState(title);
     const [characterIdeaCount, setIdeaCharacterCount] = useState(0);
@@ -45,11 +45,12 @@ const DiscussionForm = ({ title }) => {
     const handleFormSubmit = async event => {
         event.preventDefault();
         try {
-            await addDiscussion({
+            const discussion = await addDiscussion({
                 variables: { ideaText, topicTitle }
             });
-
-            // clear form value
+            console.log(discussions);
+            console.log(discussion.data.addDiscussion);
+            setDiscussion([...discussions, discussion.data.addDiscussion]);
             setIdeaText('');
             setIdeaCharacterCount(0);
 

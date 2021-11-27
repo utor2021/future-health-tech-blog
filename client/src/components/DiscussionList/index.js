@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_DISCUSSION } from '../../utils/mutations';
 
-const DiscussionList = ({ discussions, title }) => {
+const DiscussionList = ({ discussions, title, setDiscussion }) => {
     const [removeDiscussion] = useMutation(REMOVE_DISCUSSION);
     if (discussions == null && !discussions.length ) {
         return <h3>No Discussions Yet</h3>;
@@ -22,7 +22,9 @@ const DiscussionList = ({ discussions, title }) => {
             console.log(err);
         }
     }
+
 const userProfile = Auth.getProfile();
+console.log(discussions);
     return (
         <div>
             <h3>{title}</h3>
